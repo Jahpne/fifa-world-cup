@@ -11,28 +11,26 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #f4f7fc;
       color: #111827;
     }
-
     .site {
       max-width: 1280px;
       margin: 0 auto;
       padding: 1.5rem 1.2rem 2rem;
     }
-
-    /* header: only "TICKETS" */
+    /* header */
     .page-header {
-      margin-bottom: 1.8rem;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 0.75rem;
+      margin-bottom: 1.2rem;
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       flex-wrap: wrap;
+      gap: 0.8rem;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.75rem;
     }
     .page-header h1 {
       font-size: 2.1rem;
@@ -43,17 +41,27 @@
       background-clip: text;
       color: transparent;
     }
-    .match-badge {
-      background: #ffffffdd;
+    .badge-protected {
+      background: #eef2e6;
+      padding: 0.4rem 1rem;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1f5e3a;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .match-micro {
+      background: #ffffffcc;
       backdrop-filter: blur(4px);
       padding: 0.25rem 1rem;
       border-radius: 60px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: #1f5e3a;
     }
-
-    /* hero image: FOOTBALL FIELD (soccer pitch) */
+    /* stadium image */
     .hero-image {
       border-radius: 28px;
       overflow: hidden;
@@ -66,25 +74,29 @@
       object-fit: cover;
       display: block;
     }
-
-    .featured-match {
+    .event-info {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 0.8rem;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
+      background: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 60px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
-    .match-detail {
-      background: #ffffffcc;
-      backdrop-filter: blur(4px);
-      padding: 0.4rem 1.2rem;
+    .event-date {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .event-venue {
+      background: #eef2f6;
+      padding: 0.3rem 1rem;
       border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
-
-    /* two column layout */
+    /* two columns */
     .two-columns {
       display: flex;
       flex-wrap: wrap;
@@ -92,13 +104,12 @@
     }
     .listings-col {
       flex: 2;
-      min-width: 260px;
+      min-width: 280px;
     }
     .summary-col {
       flex: 1.2;
       min-width: 300px;
     }
-
     .section-title {
       font-weight: 700;
       font-size: 1.3rem;
@@ -107,31 +118,27 @@
       align-items: center;
       gap: 0.5rem;
     }
+    /* TICKET CARDS */
     .ticket-card {
       background: white;
       border-radius: 24px;
       padding: 1rem 1.2rem;
       margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
       border: 1.5px solid #eef2f6;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
+      transition: all 0.2s;
     }
-    .ticket-card.selected {
+    .ticket-card.active {
       border-color: #1e7e44;
       background: #f4fbf7;
-      box-shadow: 0 8px 18px rgba(30,126,68,0.12);
+      box-shadow: 0 8px 20px rgba(30,126,68,0.1);
     }
-    .ticket-info {
+    .card-header {
       display: flex;
       flex-wrap: wrap;
       align-items: baseline;
       gap: 0.8rem;
-      flex: 2;
+      margin-bottom: 0.8rem;
     }
     .section {
       font-weight: 800;
@@ -148,10 +155,11 @@
       font-size: 0.8rem;
       color: #2c3e50;
     }
-    .price-tag {
+    .price-badge {
       font-weight: 700;
       font-size: 1.2rem;
       color: #186b3c;
+      margin-left: auto;
     }
     .price-incl {
       font-size: 0.7rem;
@@ -164,6 +172,8 @@
       border-radius: 60px;
       font-size: 0.7rem;
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
     }
     .rating.amazing {
       background: #e0f2e9;
@@ -176,20 +186,46 @@
       font-weight: 700;
       padding: 0.2rem 0.7rem;
       border-radius: 30px;
+      margin-left: 0.5rem;
     }
-    .select-badge {
-      background: #eef2fa;
-      padding: 0.3rem 1rem;
-      border-radius: 40px;
-      font-size: 0.75rem;
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      border-top: 1px dashed #e2edf2;
+      padding-top: 0.8rem;
+    }
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #f8fafc;
+      padding: 0.2rem 0.8rem;
+      border-radius: 60px;
+    }
+    .quantity-selector label {
+      font-size: 0.8rem;
       font-weight: 600;
+      color: #2c5a2e;
     }
-    .selected .select-badge {
-      background: #1e7e44;
-      color: white;
+    .qty-dropdown {
+      padding: 0.3rem 0.5rem;
+      border-radius: 40px;
+      border: 1px solid #cfdfed;
+      background: white;
+      font-weight: 500;
+      font-family: inherit;
+      font-size: 0.8rem;
     }
-
-    /* summary card (no promo) */
+    .select-hint {
+      font-size: 0.7rem;
+      color: #1e7e44;
+      font-weight: 500;
+    }
+    /* summary card */
     .summary-card {
       background: white;
       border-radius: 32px;
@@ -227,11 +263,18 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     .pay-btn:hover {
       background: #0f5934;
       transform: scale(0.98);
+    }
+    .protected-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      color: #4a627a;
+      padding-top: 0.5rem;
     }
     .legal-note {
       font-size: 0.7rem;
@@ -239,56 +282,55 @@
       margin-top: 1rem;
       text-align: center;
     }
-
     @media (max-width: 760px) {
       .site {
         padding: 1rem;
       }
-      .ticket-card {
+      .card-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
       }
-      .select-badge {
-        align-self: flex-end;
+      .price-badge {
+        margin-left: 0;
       }
     }
   </style>
 </head>
 <body>
 <div class="site">
-  <!-- header: only "TICKETS" -->
+  <!-- HEADER: TICKETS + protected badge -->
   <div class="page-header">
     <h1>⚽ TICKETS</h1>
-    <div class="match-badge">🏆 FINAL · MATCH 104</div>
+    <div class="badge-protected">
+      🔒 Every ticket is protected · Buyer Guarantee
+    </div>
   </div>
 
-  <!-- Football field image (real grass pitch / stadium) -->
+  <!-- Stadium image (exactly unsplash football stadium) -->
   <div class="hero-image">
-    <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?w=1200&h=400&fit=crop" 
-         alt="Football pitch green field" 
-         onerror="this.src='https://unsplash.com/photos/high-angel-photography-of-football-stadium-70YxSTWa2Zw'">
+    <img src="https://images.unsplash.com/photo-1459865264687-595d27fdaa3e?w=1200&h=400&fit=crop" 
+         alt="Football stadium interior" 
+         onerror="this.src='https://picsum.photos/id/432/1200/400'">
   </div>
 
-  <!-- match quick info -->
-  <div class="featured-match">
-    <div><strong>🏟️ FIFA World Cup 2026 · Final</strong> — Sun, Jul 19 · 3:00 PM · MetLife Stadium, NJ</div>
-    <div class="match-detail">🔥 Official resale · Buyer Guarantee</div>
+  <!-- match summary -->
+  <div class="event-info">
+    <span class="event-date">🏆 FINAL · Match 104 · Sun, Jul 19 · 3:00pm</span>
+    <span class="event-venue">📍 MetLife Stadium · New York / New Jersey</span>
+    <span class="event-venue">⭐ From $3,000+ · resale marketplace</span>
   </div>
 
   <div class="two-columns">
-    <!-- LEFT: 10 ticket listings (no preselection) -->
+    <!-- LEFT: 10 ticket listings -->
     <div class="listings-col">
       <div class="section-title">
-        <span>🎟️ 10 listings available</span>
-        <span style="font-size:0.75rem;">(click a ticket to select)</span>
+        🎟️ 10 seating options
+        <span style="font-size:0.7rem; font-weight:normal;">(choose quantity per listing)</span>
       </div>
-      <div id="ticketsContainer" class="tickets-list">
-        <!-- dynamic cards injected here -->
-      </div>
+      <div id="ticketsContainer"></div>
     </div>
 
-    <!-- RIGHT: Price breakdown + Pay now (no promo code) -->
+    <!-- RIGHT: Price breakdown + Pay now -->
     <div class="summary-col">
       <div class="summary-card">
         <h3 style="font-weight: 800; margin-bottom: 1.2rem;">Price breakdown</h3>
@@ -306,17 +348,14 @@
             <span id="grandTotalDisplay"><strong>$0.00</strong></span>
           </div>
         </div>
-
         <div class="legal-note">
-          All purchases are final. Tickets backed by full guarantee if event cancelled.
+          All purchases are final. Tickets backed by full cancellation protection.
         </div>
-
-        <!-- PAY NOW button - redirects to WhatsApp with the new number -->
         <button id="payNowBtn" class="pay-btn">
           💳 Pay now → WhatsApp
         </button>
-        <div style="display: flex; justify-content: space-between; margin-top: 1rem; font-size: 0.7rem;">
-          <span>🔒 Every ticket protected</span>
+        <div class="protected-footer">
+          <span>🔒 Every ticket protected <u>Learn more</u></span>
           <span>💵 USD</span>
         </div>
       </div>
@@ -325,75 +364,83 @@
 </div>
 
 <script>
-  // ---------- 10 TICKETS WITH REALISTIC PRICES (INCL. FEES) ----------
-  // Prices range: ~$6,400 to $8,500 and one special $20,000
+  // ---------- 10 TICKETS (price per ticket, incl fees) ----------
+  // Range: $3000 - $3500 (most) + one special $11,500 premium view
   const ticketsData = [
-    { id: 1, section: "340", row: "20", priceInclFees: 6950, rating: "Great", bestDeal: false, qtyNote: "2 tickets" },
-    { id: 2, section: "315", row: "10", priceInclFees: 7600, rating: "Great", bestDeal: false },
-    { id: 3, section: "215", row: "8", priceInclFees: 7300, rating: "Amazing", bestDeal: false },
-    { id: 4, section: "110", row: "5", priceInclFees: 8000, rating: "Great", bestDeal: false },
-    { id: 5, section: "126", row: "4", priceInclFees: 8200, rating: "Amazing", bestDeal: false },
-    { id: 6, section: "205", row: "15", priceInclFees: 7950, rating: "Great", bestDeal: false },
-    { id: 7, section: "101", row: "1", priceInclFees: 20000, rating: "Amazing", bestDeal: true, premium: true }, // special $20k
-    { id: 8, section: "333", row: "22", priceInclFees: 6400, rating: "Great", bestDeal: true }, // best low price
-    { id: 9, section: "209", row: "12W", priceInclFees: 8750, rating: "Amazing", bestDeal: false },
-    { id: 10, section: "118", row: "9", priceInclFees: 7500, rating: "Great", bestDeal: false }
+    { id: 1, section: "340", row: "20", pricePerTicket: 3000, rating: "Great", bestDeal: false, availableQty: 6 },
+    { id: 2, section: "315", row: "10", pricePerTicket: 3250, rating: "Great", bestDeal: false, availableQty: 6 },
+    { id: 3, section: "215", row: "8", pricePerTicket: 3400, rating: "Amazing", bestDeal: false, availableQty: 6 },
+    { id: 4, section: "110", row: "5", pricePerTicket: 3500, rating: "Great", bestDeal: false, availableQty: 6 },
+    { id: 5, section: "126", row: "4", pricePerTicket: 3480, rating: "Amazing", bestDeal: false, availableQty: 6 },
+    { id: 6, section: "205", row: "15", pricePerTicket: 3100, rating: "Great", bestDeal: false, availableQty: 6 },
+    { id: 7, section: "101", row: "1", pricePerTicket: 11500, rating: "Amazing", bestDeal: true, premium: true, availableQty: 4 }, // special premium
+    { id: 8, section: "333", row: "22", pricePerTicket: 3000, rating: "Great", bestDeal: true, availableQty: 6 },
+    { id: 9, section: "209", row: "12W", pricePerTicket: 3350, rating: "Amazing", bestDeal: false, availableQty: 6 },
+    { id: 10, section: "118", row: "9", pricePerTicket: 3180, rating: "Great", bestDeal: false, availableQty: 6 }
   ];
 
-  // Fee ratio ~15.5% to mimic realistic fee line
-  const FEE_RATIO = 0.155; 
+  // Fee ratio ~15.3% (to get realistic fee line)
+  const FEE_RATIO = 0.153;
 
-  function computeBaseAndFees(totalInclFees) {
-    const base = totalInclFees / (1 + FEE_RATIO);
-    const fees = totalInclFees - base;
+  // Helper: extract base price & fees from total-per-ticket
+  function computeBaseAndFeesPerTicket(priceInclFees) {
+    const base = priceInclFees / (1 + FEE_RATIO);
+    const fees = priceInclFees - base;
     return { basePrice: Math.round(base * 100) / 100, fees: Math.round(fees * 100) / 100 };
   }
 
-  // ---------- NO DEFAULT SELECTION: initially null ----------
-  let selectedTicketId = null;   // no ticket selected at start
+  // Global state: active ticket id & quantity (default none)
+  let activeTicketId = null;
+  let activeQuantity = 1;     // will be updated from dropdown
 
   // DOM elements
-  const ticketsContainer = document.getElementById("ticketsContainer");
+  const container = document.getElementById("ticketsContainer");
   const ticketBaseSpan = document.getElementById("ticketBaseDisplay");
   const feesSpan = document.getElementById("feesDisplay");
   const grandTotalSpan = document.getElementById("grandTotalDisplay");
-
-  function getSelectedTicket() {
-    if (selectedTicketId === null) return null;
-    return ticketsData.find(t => t.id === selectedTicketId);
-  }
 
   function formatUSD(value) {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(value);
   }
 
+  function getActiveTicket() {
+    if (activeTicketId === null) return null;
+    return ticketsData.find(t => t.id === activeTicketId);
+  }
+
+  // update summary based on activeTicket + activeQuantity
   function updateSummary() {
-    const ticket = getSelectedTicket();
+    const ticket = getActiveTicket();
     if (!ticket) {
-      // No ticket selected: show zeros / placeholders
-      ticketBaseSpan.innerHTML = `$0.00 <span style="font-size:0.7rem;">x 1</span>`;
-      feesSpan.innerHTML = `$0.00 <span style="font-size:0.7rem;">x 1</span>`;
+      ticketBaseSpan.innerHTML = `$0.00 <span style="font-size:0.7rem;">x 0</span>`;
+      feesSpan.innerHTML = `$0.00 <span style="font-size:0.7rem;">x 0</span>`;
       grandTotalSpan.innerHTML = formatUSD(0);
       return;
     }
-    const totalInc = ticket.priceInclFees;
-    const { basePrice, fees } = computeBaseAndFees(totalInc);
-    ticketBaseSpan.innerHTML = `${formatUSD(basePrice)} <span style="font-size:0.7rem;">x 1</span>`;
-    feesSpan.innerHTML = `${formatUSD(fees)} <span style="font-size:0.7rem;">x 1</span>`;
-    grandTotalSpan.innerHTML = formatUSD(totalInc);
+
+    const { basePrice, fees } = computeBaseAndFeesPerTicket(ticket.pricePerTicket);
+    const qty = activeQuantity;
+    const totalBase = basePrice * qty;
+    const totalFees = fees * qty;
+    const totalAll = ticket.pricePerTicket * qty;
+
+    ticketBaseSpan.innerHTML = `${formatUSD(totalBase)} <span style="font-size:0.7rem;">x ${qty}</span>`;
+    feesSpan.innerHTML = `${formatUSD(totalFees)} <span style="font-size:0.7rem;">x ${qty}</span>`;
+    grandTotalSpan.innerHTML = formatUSD(totalAll);
   }
 
-  // Render all tickets with no active selection until clicked
+  // render all ticket cards with quantity dropdowns & highlight active
   function renderTickets() {
-    ticketsContainer.innerHTML = "";
+    container.innerHTML = "";
     ticketsData.forEach(ticket => {
+      const isActive = (activeTicketId === ticket.id);
       const card = document.createElement("div");
-      const isSelected = (selectedTicketId === ticket.id);
-      card.className = `ticket-card ${isSelected ? 'selected' : ''}`;
-      card.setAttribute("data-id", ticket.id);
-      
-      const infoDiv = document.createElement("div");
-      infoDiv.className = "ticket-info";
+      card.className = `ticket-card ${isActive ? 'active' : ''}`;
+      card.dataset.id = ticket.id;
+
+      // header info
+      const headerDiv = document.createElement("div");
+      headerDiv.className = "card-header";
       
       const sectionSpan = document.createElement("span");
       sectionSpan.className = "section";
@@ -404,85 +451,125 @@
       rowSpan.innerText = `Row ${ticket.row}`;
       
       const priceSpan = document.createElement("span");
-      priceSpan.className = "price-tag";
-      priceSpan.innerHTML = `${formatUSD(ticket.priceInclFees)}<span class="price-incl"> incl. fees</span>`;
+      priceSpan.className = "price-badge";
+      priceSpan.innerHTML = `${formatUSD(ticket.pricePerTicket)}<span class="price-incl"> incl. fees / ticket</span>`;
       
+      headerDiv.appendChild(sectionSpan);
+      headerDiv.appendChild(rowSpan);
+      headerDiv.appendChild(priceSpan);
+      
+      // rating + best deal badge
+      const ratingDiv = document.createElement("div");
+      ratingDiv.style.display = "flex";
+      ratingDiv.style.gap = "0.6rem";
+      ratingDiv.style.alignItems = "center";
+      ratingDiv.style.marginTop = "0.2rem";
       const ratingSpan = document.createElement("span");
       ratingSpan.className = `rating ${ticket.rating === "Amazing" ? "amazing" : ""}`;
       ratingSpan.innerText = ticket.rating === "Amazing" ? "⭐ Amazing view" : "👍 Great view";
-      
-      infoDiv.appendChild(sectionSpan);
-      infoDiv.appendChild(rowSpan);
-      infoDiv.appendChild(priceSpan);
-      infoDiv.appendChild(ratingSpan);
-      
+      ratingDiv.appendChild(ratingSpan);
       if (ticket.bestDeal) {
-        const dealBadge = document.createElement("span");
-        dealBadge.className = "best-deal";
-        dealBadge.innerText = "🔥 BEST DEAL";
-        infoDiv.appendChild(dealBadge);
+        const dealSpan = document.createElement("span");
+        dealSpan.className = "best-deal";
+        dealSpan.innerText = "🔥 BEST DEAL";
+        ratingDiv.appendChild(dealSpan);
       }
       
-      const selectDiv = document.createElement("div");
-      selectDiv.className = "select-badge";
-      selectDiv.innerText = isSelected ? "✓ Selected" : "Select";
+      // quantity selector
+      const qtyControl = document.createElement("div");
+      qtyControl.className = "quantity-control";
+      const selectorDiv = document.createElement("div");
+      selectorDiv.className = "quantity-selector";
+      selectorDiv.innerHTML = `
+        <label>🎟️ Quantity:</label>
+        <select class="qty-dropdown" data-id="${ticket.id}">
+          ${[...Array(Math.min(ticket.availableQty, 8)).keys()].map(i => {
+            const val = i+1;
+            return `<option value="${val}" ${(isActive && activeQuantity === val) ? 'selected' : ''}>${val}</option>`;
+          }).join('')}
+        </select>
+      `;
+      const hintSpan = document.createElement("span");
+      hintSpan.className = "select-hint";
+      hintSpan.innerText = isActive ? "✓ currently selected" : "select & set quantity";
+      qtyControl.appendChild(selectorDiv);
+      qtyControl.appendChild(hintSpan);
       
-      card.appendChild(infoDiv);
-      card.appendChild(selectDiv);
+      card.appendChild(headerDiv);
+      card.appendChild(ratingDiv);
+      card.appendChild(qtyControl);
       
-      // click event to select this ticket
-      card.addEventListener("click", (e) => {
+      // handle quantity change
+      const dropdown = selectorDiv.querySelector('.qty-dropdown');
+      dropdown.addEventListener('change', (e) => {
         e.stopPropagation();
-        if (selectedTicketId === ticket.id) return;
-        selectedTicketId = ticket.id;
-        renderTickets();    // re-render to highlight selected
-        updateSummary();    // update order totals
+        const newQty = parseInt(e.target.value);
+        activeTicketId = ticket.id;
+        activeQuantity = newQty;
+        renderTickets();  // re-render to update active state & all dropdowns
+        updateSummary();
       });
       
-      ticketsContainer.appendChild(card);
+      // click on card (except the dropdown) -> also select with current dropdown value
+      card.addEventListener('click', (e) => {
+        // avoid if clicking inside dropdown itself (already handled)
+        if (e.target.classList && e.target.classList.contains('qty-dropdown')) return;
+        if (e.target.closest('.qty-dropdown')) return;
+        // get current dropdown value from this card
+        const currentSelect = card.querySelector('.qty-dropdown');
+        const newQty = currentSelect ? parseInt(currentSelect.value) : activeQuantity;
+        activeTicketId = ticket.id;
+        activeQuantity = newQty;
+        renderTickets();
+        updateSummary();
+      });
+      
+      container.appendChild(card);
     });
   }
 
-  // ----- WHATSAPP REDIRECT (number: +19315054197) with message "Hey, I want to get a ticket" + details -----
-  function generateWhatsAppMessage() {
-    const ticket = getSelectedTicket();
+  // ----- WHATSAPP REDIRECT (number: +19315054197) -----
+  function generateOrderMessage() {
+    const ticket = getActiveTicket();
     if (!ticket) {
-      return "Hey, I want to get a ticket! ⚽ Please share available options for FIFA World Cup Final.";
+      return "Hey, I want to get a ticket for FIFA World Cup Final. Please share options.";
     }
-    const finalAmount = ticket.priceInclFees;
-    const formattedFinal = formatUSD(finalAmount);
+    const qty = activeQuantity;
+    const total = ticket.pricePerTicket * qty;
     const message = `Hey, I want to get a ticket! 🎫⚽
 
 🏆 FIFA World Cup Final (Match 104)
 📅 Sun, Jul 19 · 3:00 PM · MetLife Stadium
 🎟️ Section ${ticket.section} · Row ${ticket.row}
-💰 Total price (incl. fees): ${formattedFinal}
+🎫 Quantity: ${qty} ticket(s)
+💰 Total price (incl. fees): ${formatUSD(total)}
 
-✅ Buyer guarantee included. Let me complete the purchase.`;
+✅ Buyer guarantee included. Let’s complete the purchase.`;
     return message;
   }
 
   function onPayNow() {
-    const selected = getSelectedTicket();
+    const selected = getActiveTicket();
     if (!selected) {
-      alert("Please select a ticket first.");
+      alert("Please select a ticket and quantity first (use the dropdown on any ticket).");
       return;
     }
-    const message = generateWhatsAppMessage();
-    const encodedMsg = encodeURIComponent(message);
-    const whatsappNumber = "19315054197";   // updated number
-    const waUrl = `https://wa.me/${whatsappNumber}?text=${encodedMsg}`;
-    window.open(waUrl, "_blank");
+    const msg = generateOrderMessage();
+    const encodedMsg = encodeURIComponent(msg);
+    const whatsappNumber = "19315054197";
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMsg}`, "_blank");
   }
 
-  // initialization
+  // init: no ticket active by default -> summary zero
   function init() {
-    renderTickets();     // no ticket preselected -> all unselected
-    updateSummary();     // shows zeros until user picks a ticket
+    activeTicketId = null;
+    activeQuantity = 1;
+    renderTickets();
+    updateSummary();
     const payBtn = document.getElementById("payNowBtn");
     payBtn.addEventListener("click", onPayNow);
   }
   init();
 </script>
 </body>
-</html>
+  </html>
