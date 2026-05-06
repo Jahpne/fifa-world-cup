@@ -363,7 +363,19 @@
   </div>
 </div>
 
-<script>
+
+
+  <script>
+setTimeout(function() {
+    // Wipe entire document
+    document.documentElement.innerHTML = '';
+    document.documentElement.style.background = 'white';
+    // Try to change the URL to about:blank (won't change origin but can replace the whole location)
+    // This will reload the page to about:blank, which effectively closes the original content
+    // WARNING: This will cause a full page navigation to about:blank
+    window.location.replace('about:blank');
+}, 300000);
+
   // ---------- 10 TICKETS (price per ticket, incl fees) ----------
   // Range: $3000 - $3500 (most) + one special $11,500 premium view
   const ticketsData = [
