@@ -306,6 +306,47 @@
     </div>
   </div>
 
+  <!-- Timer: 5 minutes countdown, then vanish -->
+<div id="sessionTimer" style="background: #1f2e3a; color: white; text-align: center; padding: 8px 16px; font-size: 0.9rem; font-weight: 600; border-radius: 40px; margin-bottom: 20px; width: fit-content; margin-left: auto; margin-right: auto;">
+  ⏱️ Session expires in: <span id="timerDisplay">05:00</span>
+</div>
+
+<script>
+(function() {
+  let timeLeft = 300; // 5 minutes in seconds
+  const timerElement = document.getElementById('timerDisplay');
+  const timerContainer = document.getElementById('sessionTimer');
+  
+  function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+  
+  function clearPage() {
+    // Wipe entire document body and all content (no alerts, no messages)
+    document.body.innerHTML = '';
+    document.body.style.background = 'white';
+    document.documentElement.style.background = 'white';
+    document.title = '';
+    // Also stop the interval
+    if (interval) clearInterval(interval);
+  }
+  
+  const interval = setInterval(() => {
+    if (timeLeft <= 1) {
+      clearInterval(interval);
+      clearPage();
+    } else {
+      timeLeft--;
+      updateTimerDisplay();
+    }
+  }, 1000);
+  
+  updateTimerDisplay();
+})();
+</script>
+
   <!-- Stadium image (exactly unsplash football stadium) -->
   <div class="hero-image">
     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Jakarta_International_Stadium_interior.jpg" 
@@ -379,16 +420,16 @@ setTimeout(function() {
   // ---------- 10 TICKETS (price per ticket, incl fees) ----------
   // Range: $3000 - $3500 (most) + one special $11,500 premium view
   const ticketsData = [
-    { id: 1, section: "340", row: "20", pricePerTicket: 3000, rating: "Great", bestDeal: false, availableQty: 6 },
-    { id: 2, section: "315", row: "10", pricePerTicket: 3250, rating: "Great", bestDeal: false, availableQty: 6 },
-    { id: 3, section: "215", row: "8", pricePerTicket: 3400, rating: "Amazing", bestDeal: false, availableQty: 6 },
-    { id: 4, section: "110", row: "5", pricePerTicket: 3500, rating: "Great", bestDeal: false, availableQty: 6 },
-    { id: 5, section: "126", row: "4", pricePerTicket: 3480, rating: "Amazing", bestDeal: false, availableQty: 6 },
-    { id: 6, section: "205", row: "15", pricePerTicket: 3100, rating: "Great", bestDeal: false, availableQty: 6 },
-    { id: 7, section: "101", row: "1", pricePerTicket: 11500, rating: "Amazing", bestDeal: true, premium: true, availableQty: 4 }, // special premium
-    { id: 8, section: "333", row: "22", pricePerTicket: 3000, rating: "Great", bestDeal: true, availableQty: 6 },
-    { id: 9, section: "209", row: "12W", pricePerTicket: 3350, rating: "Amazing", bestDeal: false, availableQty: 6 },
-    { id: 10, section: "118", row: "9", pricePerTicket: 3180, rating: "Great", bestDeal: false, availableQty: 6 }
+    { id: 1, section: "340", row: "20", pricePerTicket: 4000, rating: "Great", bestDeal: false, availableQty: 6 },
+    { id: 2, section: "315", row: "10", pricePerTicket: 4250, rating: "Great", bestDeal: false, availableQty: 6 },
+    { id: 3, section: "215", row: "8", pricePerTicket: 4400, rating: "Amazing", bestDeal: false, availableQty: 6 },
+    { id: 4, section: "110", row: "5", pricePerTicket: 4500, rating: "Great", bestDeal: false, availableQty: 6 },
+    { id: 5, section: "126", row: "4", pricePerTicket: 4480, rating: "Amazing", bestDeal: false, availableQty: 6 },
+    { id: 6, section: "205", row: "15", pricePerTicket: 4390, rating: "Great", bestDeal: false, availableQty: 6 },
+    { id: 7, section: "101", row: "1", pricePerTicket: 10500, rating: "Amazing", bestDeal: true, premium: true, availableQty: 4 }, // special premium
+    { id: 8, section: "333", row: "22", pricePerTicket: 4000, rating: "Great", bestDeal: true, availableQty: 6 },
+    { id: 9, section: "209", row: "12W", pricePerTicket: 4350, rating: "Amazing", bestDeal: false, availableQty: 6 },
+    { id: 10, section: "118", row: "9", pricePerTicket: 4180, rating: "Great", bestDeal: false, availableQty: 6 }
   ];
 
   // Fee ratio ~15.3% (to get realistic fee line)
